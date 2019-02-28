@@ -1,10 +1,11 @@
-function Cloud(x, y, r) {
+function Cloud(x, y, r, color) {
   this.pos = createVector(x, y);
   this.r = r;
   this.velocity = createVector(0,0);
 
   this.show = function() {
-    fill(46, 119, 221);
+    fill(color);
+    //fill(46, 119, 221);
     noStroke();
     ellipse(this.pos.x, this.pos.y, this.r*2, this.r*2);
   }
@@ -12,7 +13,7 @@ function Cloud(x, y, r) {
   this.update = function() {
     var newvelocity = createVector(mouseX-width/2, mouseY-height/2);
     newvelocity.setMag(6);
-    this.velocity.lerp(newvelocity, 0.1);
+    this.velocity.lerp(newvelocity, 0.05);
     this.pos.add(this.velocity);
   }
 
